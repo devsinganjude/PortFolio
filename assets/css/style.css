@@ -258,8 +258,8 @@ h1{font-size:44px;margin:0;line-height:1.02}
   border-radius:16px;
 }
 .profile-photo-wrap{
-  width:120px;
-  height:120px;
+  width:200px;
+  height:200px;
   border-radius:16px;
   overflow:hidden;
   box-shadow:0 8px 24px rgba(11,197,234,0.15);
