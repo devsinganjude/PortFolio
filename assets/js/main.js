@@ -15,7 +15,7 @@ if (saved === 'light') {
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     const isCurrentlyLight = html.classList.contains('light');
-    
+
     if (isCurrentlyLight) {
       html.classList.remove('light');
       localStorage.setItem('theme', 'dark');
@@ -25,7 +25,7 @@ if (themeToggle) {
       localStorage.setItem('theme', 'light');
       themeToggle.textContent = '🌞';
     }
-    
+
     // Add rotation animation
     themeToggle.style.animation = 'none';
     setTimeout(() => {
@@ -42,26 +42,15 @@ if (hamburger) {
     const expanded = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', String(!expanded));
     navLinks.classList.toggle('open');
-    // toggle a simple inline style for mobile menu
-    if (navLinks.style.display === 'block') {
-      navLinks.style.display = '';
-    } else {
-      navLinks.style.display = 'block';
-      navLinks.style.position = 'absolute';
-      navLinks.style.right = '16px';
-      navLinks.style.top = '64px';
-      navLinks.style.background = 'rgba(0,0,0,0.45)';
-      navLinks.style.padding = '12px';
-      navLinks.style.borderRadius = '10px';
-      navLinks.style.animation = 'slideDown 0.3s ease-out';
-    }
+    // Toggle mobile menu via CSS class
+    navLinks.classList.toggle('mobile-menu-open');
   });
-  
+
   // Close menu when link clicked
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.setAttribute('aria-expanded', 'false');
-      navLinks.style.display = '';
+      navLinks.classList.remove('mobile-menu-open');
     });
   });
 }
@@ -74,23 +63,34 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, {threshold: 0.15});
+}, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Navbar background on scroll
+// Navbar background and auto-hide on scroll
 const nav = document.getElementById('nav');
-let lastScrollY = 0;
+let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
-  lastScrollY = window.scrollY;
-  if (lastScrollY > 50) {
-    nav.style.background = 'rgba(17, 24, 39, 0.8)';
-    nav.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+  const currentScrollY = window.scrollY;
+
+  // Background toggling via class
+  if (currentScrollY > 50) {
+    nav.classList.add('nav-scrolled');
   } else {
-    nav.style.background = '';
-    nav.style.borderBottom = '';
+    nav.classList.remove('nav-scrolled');
   }
+
+  // Hide/Show navbar based on scroll direction
+  if (currentScrollY > lastScrollY && currentScrollY > 100) {
+    // Scrolling down -> hide
+    nav.classList.add('nav-hidden');
+  } else {
+    // Scrolling up or at top -> show
+    nav.classList.remove('nav-hidden');
+  }
+
+  lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
 });
 
 // Smooth scroll with offset for fixed nav
@@ -165,3 +165,21 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// Interactive 3D Sphere TagCloud
+const techTags = [
+  '☁️ AWS', '🐳 Docker', '🐧 Linux', '🐍 Python', '☕ Java',
+  '⚛️ React', '🟢 Node.js', '🐙 Git', '⚙️ C', '🚢 Kubernetes',
+  '🔧 DevOps', '🌐 HTML5', '🎨 CSS3', '🛡️ Security'
+];
+
+if (document.querySelector('.sphere-content')) {
+  TagCloud('.sphere-content', techTags, {
+    radius: window.innerWidth < 700 ? 140 : 200,
+    maxSpeed: 'normal',
+    initSpeed: 'fast',
+    direction: 135,
+    keep: true
+  });
+}
+

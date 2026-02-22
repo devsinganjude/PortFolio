@@ -5,11 +5,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dev A. Singanjude — DevOps Engineer (Aspiring)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
 </head>
 
 <body>
+  <!-- Background Particles -->
+  <div class="particles" aria-hidden="true">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
   <div class="page">
     <header class="nav glass" id="nav" role="navigation" aria-label="Main navigation">
       <div class="container header-inner">
@@ -64,8 +81,6 @@
             </div>
           </div>
         </div>
-
-        <div class="scroll-indicator" aria-hidden="true">Scroll ↓</div>
       </section>
 
       <!-- ABOUT -->
@@ -75,9 +90,63 @@
             <h2>About Me</h2>
             <p>
               I’m a focused BTech CSE student with a passion for DevOps and web engineering. I enjoy building robust
-              CI/CD pipelines, automating cloud workflows and crafting user-friendly web apps. I love learning new tools
-              and improving how teams deliver software.
+              cloud infrastructure,
+              automating cloud workflows and crafting user-friendly web apps. I love learning new tools
+              and improving how teams deliver software. i am also a web developer and a competitive programmer. excited
+              to
+              work on challenging projects and contribute to open source. my aim is to become a DevOps engineer and a
+              web developer.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFICIENCY -->
+      <section id="proficiency" class="section">
+        <div class="container">
+          <h2 class="section-title reveal">Core Proficiency</h2>
+          <div class="glass card proficiency-card reveal delay-1">
+
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <span class="progress-name">Backend & DevOps (Linux, Docker, AWS)</span>
+                <span class="progress-percentage">85%</span>
+              </div>
+              <div class="progress-bg">
+                <div class="progress-bar" style="--target-width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <span class="progress-name">Programming (C, Java, Python)</span>
+                <span class="progress-percentage">80%</span>
+              </div>
+              <div class="progress-bg">
+                <div class="progress-bar" style="--target-width: 80%; animation-delay: 0.2s;"></div>
+              </div>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <span class="progress-name">Web Fullstack (HTML, CSS, JS, Node)</span>
+                <span class="progress-percentage">75%</span>
+              </div>
+              <div class="progress-bg">
+                <div class="progress-bar" style="--target-width: 75%; animation-delay: 0.4s;"></div>
+              </div>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-info">
+                <span class="progress-name">CI / CD & Automation</span>
+                <span class="progress-percentage">70%</span>
+              </div>
+              <div class="progress-bg">
+                <div class="progress-bar" style="--target-width: 70%; animation-delay: 0.6s;"></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -86,6 +155,11 @@
       <section id="skills" class="section">
         <div class="container">
           <h2 class="section-title reveal">Skills</h2>
+
+          <div class="sphere-wrap reveal delay-1" aria-label="Interactive 3D Sphere of Technologies">
+            <div class="sphere-content"></div>
+          </div>
+
           <div class="grid skills-grid">
             <!-- Programming -->
             <article class="glass skill-card reveal">
@@ -155,26 +229,6 @@
               </div>
             </article>
 
-            <article class="timeline-item reveal delay-3">
-              <div class="dot" aria-hidden="true"></div>
-              <div class="content">
-                <h3>UI/UX Design & Frontend</h3>
-                <span class="meta">Self-learning • 2024</span>
-                <p>Explored design principles, prototyping with Figma, and building beautiful user interfaces. Learned
-                  accessibility best practices and responsive design frameworks.</p>
-              </div>
-            </article>
-
-            <article class="timeline-item reveal delay-4">
-              <div class="dot" aria-hidden="true"></div>
-              <div class="content">
-                <h3>DevOps & Cloud Fundamentals</h3>
-                <span class="meta">Self-learning • 2024</span>
-                <p>Built CI/CD pipelines with GitHub Actions, containerized applications using Docker, explored AWS
-                  fundamentals, and experimented with Infrastructure as Code.</p>
-              </div>
-            </article>
-
             <article class="timeline-item reveal delay-5">
               <div class="dot" aria-hidden="true"></div>
               <div class="content">
@@ -196,7 +250,7 @@
           <div class="grid projects-grid">
             <a href="#" target="_blank" rel="noopener" class="glass project-card reveal">
               <div class="proj-hero">
-                <span>🌐</span>
+                <img src="assets/images/project_portfolio.png" alt="Animated Portfolio snapshot" class="proj-img">
               </div>
               <h3>Animated Portfolio</h3>
               <p>Static, responsive portfolio with animated glassmorphism and smooth scroll.</p>
@@ -206,7 +260,7 @@
             <a href="https://habit-tracker-chi-neon.vercel.app/" target="_blank" rel="noopener"
               class="glass project-card reveal delay-1">
               <div class="proj-hero">
-                <span>⚙️</span>
+                <img src="assets/images/project_habit_tracker.png" alt="Habit Tracker snapshot" class="proj-img">
               </div>
               <h3>Habit Tracker</h3>
               <p>Track your daily habits and stay motivated.</p>
@@ -216,7 +270,7 @@
             <a href="https://dev-boat.vercel.app/" target="_blank" rel="noopener"
               class="glass project-card reveal delay-2">
               <div class="proj-hero">
-                <span>💬</span>
+                <img src="assets/images/project_devboat.png" alt="DevBoat snapshot" class="proj-img">
               </div>
               <h3>Realtime Chatbot</h3>
               <p>Intillegent workspace for Programming and Basic Tasks.</p>
@@ -254,14 +308,50 @@
 
             <aside class="glass contact-info reveal delay-1">
               <h3>Get in touch</h3>
-              <p>Email: <a href="mailto:devsinganjude18@gmail.com">devsinganjude18@gmail.com</a></p>
-              <p>GitHub: <a href="https://github.com/devsinganjude" target="_blank" rel="noopener">Dev Singanjude</a>
+              <p>
+                <a href="mailto:devsinganjude18@gmail.com" class="icon-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  Email
+                </a>
               </p>
-              <p>LinkedIn: <a
-                  href="https://www.linkedin.com/in/dev-singanjude-91a8b5399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                  target="_blank" rel="noopener">Dev Singanjude</a></p>
-              <p>Instagram: <a href="https://www.instagram.com/devsinganjude.13/" target="_blank" rel="noopener">Dev
-                  Singanjude</a></p>
+              <p>
+                <a href="https://github.com/devsinganjude" target="_blank" rel="noopener" class="icon-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                  </svg>
+                  GitHub
+                </a>
+              </p>
+              <p>
+                <a href="https://www.linkedin.com/in/dev-singanjude-91a8b5399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank" rel="noopener" class="icon-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                  LinkedIn
+                </a>
+              </p>
+              <p>
+                <a href="https://www.instagram.com/devsinganjude.13/" target="_blank" rel="noopener" class="icon-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  Instagram
+                </a>
+              </p>
             </aside>
           </div>
         </div>
@@ -271,7 +361,9 @@
 
     <footer class="footer">
       <div class="container">
-        © <span id="year"></span> Dev A. Singanjude
+        <p style="margin-bottom: 8px; font-weight: 500; letter-spacing: 0.5px; opacity: 0.9;">Thank you for visiting! ✨
+        </p>
+        <p style="font-size: 0.85rem; opacity: 0.7;">© <span id="year"></span> Dev A. Singanjude</p>
       </div>
     </footer>
 
