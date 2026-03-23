@@ -704,7 +704,7 @@ h1 {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(3, 1fr)
   }
 }
 
@@ -714,7 +714,7 @@ h1 {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(4, 1fr)
   }
 }
 
@@ -855,11 +855,22 @@ h1 {
   display: block;
   text-decoration: none;
   color: inherit;
-  padding: 20px;
+  padding: 12px;
   border-radius: 12px;
   position: relative;
   overflow: hidden;
   transition: transform var(--transition);
+}
+
+.project-card h3 {
+  margin: 8px 0 4px;
+  font-size: 1rem;
+}
+
+.project-card p {
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.85;
 }
 
 .project-card::after {
@@ -884,15 +895,15 @@ h1 {
 }
 
 .proj-hero {
-  height: 160px;
-  border-radius: 10px;
+  height: 80px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
   position: relative;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   transition: transform var(--transition);
   padding: 0;
 }
@@ -931,15 +942,15 @@ h1 {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 6px;
+  margin-top: 8px;
 }
 
 .tags span {
   font-family: 'Fira Code', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 20px;
   background: rgba(11, 197, 234, 0.15);
   border: 1px solid rgba(11, 197, 234, 0.3);

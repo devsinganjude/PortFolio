@@ -111,7 +111,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// contact form handling (simulated)
+// contact form handling (FormSubmit API)
 const form = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 if (form) {
@@ -121,15 +121,38 @@ if (form) {
       formStatus.textContent = 'Sending...';
       formStatus.style.color = 'rgba(255, 255, 255, 0.7)';
     }
-    // simulate network request
-    setTimeout(() => {
+    
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch("https://formsubmit.co/ajax/devsinganjude18@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json' 
+        },
+        body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            _subject: "New Message from Portfolio Website!"
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
       if (formStatus) {
-        formStatus.textContent = '✓ Thanks — I will get back to you soon!';
+        formStatus.textContent = '✓ Thanks — Message sent successfully!';
         formStatus.style.color = 'rgba(11, 197, 234, 0.9)';
         formStatus.style.animation = 'slideInContent 0.5s ease-out';
       }
       form.reset();
-    }, 900);
+    })
+    .catch(error => {
+      if (formStatus) {
+        formStatus.textContent = '⚠️ Oops! Failed to send. Please use the Email link directly.';
+        formStatus.style.color = '#ff6b35';
+      }
+    });
   });
 }
 
