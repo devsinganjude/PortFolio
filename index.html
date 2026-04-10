@@ -308,12 +308,90 @@
               <p>A collaborative project and workspace for student developers.</p>
               <div class="tags"><span>#FullStack</span><span>#Web</span></div>
             </a>
+
+            <!-- New Projects (Hidden by default) -->
+            <a href="https://flashchat-rho.vercel.app/" target="_blank" rel="noopener"
+              class="glass project-card hidden-project" style="flex-direction: column;">
+              <div class="proj-hero" style="flex-shrink: 0;">
+                <img src="assets/images/project_flashchat.png" alt="FlashChat snapshot" class="proj-img">
+              </div>
+              <h3>FlashChat</h3>
+              <p>Secure, code-only real-time chatroom with in-memory file sharing and automatic nickname collision resolution.</p>
+              <div class="tags"><span>#React</span><span>#Node.js</span><span>#Socket.io</span></div>
+            </a>
+
+            <a href="https://dev-analyzer-tau.vercel.app/" target="_blank" rel="noopener"
+              class="glass project-card hidden-project" style="flex-direction: column;">
+              <div class="proj-hero" style="flex-shrink: 0;">
+                <img src="assets/images/project_dev_analyzer.png" alt="Dev Analyzer snapshot" class="proj-img">
+              </div>
+              <h3>Dev Analyzer</h3>
+              <p>AI-powered tool that analyzes project source code to explain high-level logic and architecture natively in JSON.</p>
+              <div class="tags"><span>#AI</span><span>#Vite</span><span>#React</span></div>
+            </a>
           </div>
 
-          <div class="view-more-wrap reveal delay-5" style="text-align: center; margin-top: 48px;">
-            <a href="https://github.com/devsinganjude" target="_blank" rel="noopener" class="btn btn-ghost">View More
-              Projects</a>
+          <style>
+            .hidden-project {
+              display: none;
+              opacity: 0;
+              transition: opacity 0.4s ease-in-out;
+            }
+            .hidden-project.show {
+              display: flex;
+              opacity: 1;
+            }
+            .proj-img-placeholder {
+              width: 100%;
+              height: 100%;
+              min-height: 200px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 4rem;
+              border-radius: 8px 8px 0 0;
+            }
+          </style>
+
+          <div class="view-more-wrap reveal delay-5" style="text-align: center; margin-top: 48px; display: flex; justify-content: center; gap: 16px;">
+            <button id="viewMoreProjectsBtn" class="btn btn-ghost">View More Projects</button>
+            <a id="githubBtn" href="https://github.com/devsinganjude" target="_blank" rel="noopener" class="btn btn-ghost" style="display: none;">View GitHub</a>
           </div>
+          
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const viewMoreBtn = document.getElementById("viewMoreProjectsBtn");
+              const githubBtn = document.getElementById("githubBtn");
+              const hiddenProjects = document.querySelectorAll(".hidden-project");
+              
+              if (viewMoreBtn) {
+                viewMoreBtn.addEventListener("click", () => {
+                  let isShowing = hiddenProjects[0].classList.contains("show");
+                  
+                  if (!isShowing) {
+                    hiddenProjects.forEach((proj, index) => {
+                      proj.style.display = 'flex';
+                      // Small delay to allow display:flex to apply before transition
+                      setTimeout(() => {
+                        proj.classList.add("show");
+                      }, 50 * index);
+                    });
+                    viewMoreBtn.textContent = "Show Less";
+                    githubBtn.style.display = "inline-flex";
+                  } else {
+                    hiddenProjects.forEach(proj => {
+                      proj.classList.remove("show");
+                      setTimeout(() => {
+                        proj.style.display = 'none';
+                      }, 400); // Wait for fade out
+                    });
+                    viewMoreBtn.textContent = "View More Projects";
+                    githubBtn.style.display = "none";
+                  }
+                });
+              }
+            });
+          </script>
         </div>
       </section>
 
