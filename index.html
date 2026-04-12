@@ -333,160 +333,171 @@
             </a>
           </div>
 
-          <style>
-            .hidden-project {
-              display: none;
-              opacity: 0;
-              transition: opacity 0.4s ease-in-out;
-            }
+          <a href="https://lifeos-app-chi.vercel.app/" target="_blank" rel="noopener"
+            class="glass project-card hidden-project" style="flex-direction: column;">
+            <div class="proj-hero" style="flex-shrink: 0;">
+              <img src="assets/images/project_lifeos.png" alt="LifeOS snapshot" class="proj-img">
+            </div>
+            <h3>LifeOS</h3>
+            <p>A modern digital life operating system for professional development tracking.</p>
+            <div class="tags"><span>#React</span><span>#Tailwind</span></div>
+          </a>
+        </div>
 
-            .hidden-project.show {
-              display: flex;
-              opacity: 1;
-            }
+        <style>
+          .hidden-project {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+          }
 
-            .proj-img-placeholder {
-              width: 100%;
-              height: 100%;
-              min-height: 200px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 4rem;
-              border-radius: 8px 8px 0 0;
-            }
-          </style>
+          .hidden-project.show {
+            display: flex;
+            opacity: 1;
+          }
 
-          <div class="view-more-wrap reveal delay-5"
-            style="text-align: center; margin-top: 48px; display: flex; justify-content: center; gap: 16px;">
-            <button id="viewMoreProjectsBtn" class="btn btn-ghost">View More Projects</button>
-            <a id="githubBtn" href="https://github.com/devsinganjude" target="_blank" rel="noopener"
-              class="btn btn-ghost" style="display: none;">View GitHub</a>
+          .proj-img-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-radius: 8px 8px 0 0;
+          }
+        </style>
+
+        <div class="view-more-wrap reveal delay-5"
+          style="text-align: center; margin-top: 48px; display: flex; justify-content: center; gap: 16px;">
+          <button id="viewMoreProjectsBtn" class="btn btn-ghost">View More Projects</button>
+          <a id="githubBtn" href="https://github.com/devsinganjude" target="_blank" rel="noopener" class="btn btn-ghost"
+            style="display: none;">View GitHub</a>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const viewMoreBtn = document.getElementById("viewMoreProjectsBtn");
+            const githubBtn = document.getElementById("githubBtn");
+            const hiddenProjects = document.querySelectorAll(".hidden-project");
+
+            if (viewMoreBtn) {
+              viewMoreBtn.addEventListener("click", () => {
+                let isShowing = hiddenProjects[0].classList.contains("show");
+
+                if (!isShowing) {
+                  hiddenProjects.forEach((proj, index) => {
+                    proj.style.display = 'flex';
+                    // Small delay to allow display:flex to apply before transition
+                    setTimeout(() => {
+                      proj.classList.add("show");
+                    }, 50 * index);
+                  });
+                  viewMoreBtn.textContent = "Show Less";
+                  githubBtn.style.display = "inline-flex";
+                } else {
+                  hiddenProjects.forEach(proj => {
+                    proj.classList.remove("show");
+                    setTimeout(() => {
+                      proj.style.display = 'none';
+                    }, 400); // Wait for fade out
+                  });
+                  viewMoreBtn.textContent = "View More Projects";
+                  githubBtn.style.display = "none";
+                }
+              });
+            }
+          });
+        </script>
+  </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Contact</h2>
+      <div class="contact-grid">
+        <form class="glass contact-form reveal" id="contactForm">
+          <label> <span class="label">Name</span>
+            <input type="text" name="name" required placeholder="Your name" />
+          </label>
+
+          <label> <span class="label">Email</span>
+            <input type="email" name="email" required placeholder="you@example.com" />
+          </label>
+
+          <label> <span class="label">Message</span>
+            <textarea name="message" required placeholder="Write a message..." rows="6"></textarea>
+          </label>
+
+          <div class="form-row">
+            <button type="submit" class="btn">Send Message</button>
+            <a class="btn btn-ghost" href="mailto:devsinganjude18@gmail.com">Email Me</a>
           </div>
 
-          <script>
-            document.addEventListener("DOMContentLoaded", () => {
-              const viewMoreBtn = document.getElementById("viewMoreProjectsBtn");
-              const githubBtn = document.getElementById("githubBtn");
-              const hiddenProjects = document.querySelectorAll(".hidden-project");
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+        </form>
 
-              if (viewMoreBtn) {
-                viewMoreBtn.addEventListener("click", () => {
-                  let isShowing = hiddenProjects[0].classList.contains("show");
-
-                  if (!isShowing) {
-                    hiddenProjects.forEach((proj, index) => {
-                      proj.style.display = 'flex';
-                      // Small delay to allow display:flex to apply before transition
-                      setTimeout(() => {
-                        proj.classList.add("show");
-                      }, 50 * index);
-                    });
-                    viewMoreBtn.textContent = "Show Less";
-                    githubBtn.style.display = "inline-flex";
-                  } else {
-                    hiddenProjects.forEach(proj => {
-                      proj.classList.remove("show");
-                      setTimeout(() => {
-                        proj.style.display = 'none';
-                      }, 400); // Wait for fade out
-                    });
-                    viewMoreBtn.textContent = "View More Projects";
-                    githubBtn.style.display = "none";
-                  }
-                });
-              }
-            });
-          </script>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="section">
-        <div class="container">
-          <h2 class="section-title reveal">Contact</h2>
-          <div class="contact-grid">
-            <form class="glass contact-form reveal" id="contactForm">
-              <label> <span class="label">Name</span>
-                <input type="text" name="name" required placeholder="Your name" />
-              </label>
-
-              <label> <span class="label">Email</span>
-                <input type="email" name="email" required placeholder="you@example.com" />
-              </label>
-
-              <label> <span class="label">Message</span>
-                <textarea name="message" required placeholder="Write a message..." rows="6"></textarea>
-              </label>
-
-              <div class="form-row">
-                <button type="submit" class="btn">Send Message</button>
-                <a class="btn btn-ghost" href="mailto:devsinganjude18@gmail.com">Email Me</a>
-              </div>
-
-              <div id="formStatus" class="form-status" aria-live="polite"></div>
-            </form>
-
-            <aside class="glass contact-info reveal delay-1">
-              <h3>Get in touch</h3>
-              <p>
-                <a href="mailto:devsinganjude18@gmail.com" class="icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                  Email
-                </a>
-              </p>
-              <p>
-                <a href="https://github.com/devsinganjude" target="_blank" rel="noopener" class="icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                    </path>
-                  </svg>
-                  GitHub
-                </a>
-              </p>
-              <p>
-                <a href="https://www.linkedin.com/in/dev-singanjude-91a8b5399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                  target="_blank" rel="noopener" class="icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  LinkedIn
-                </a>
-              </p>
-              <p>
-                <a href="https://www.instagram.com/devsinganjude.13/" target="_blank" rel="noopener" class="icon-link">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                  Instagram
-                </a>
-              </p>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <p style="margin-bottom: 8px; font-weight: 500; letter-spacing: 0.5px; opacity: 0.9;">Thank you for visiting! ✨
-        </p>
-        <p style="font-size: 0.85rem; opacity: 0.7;">© <span id="year"></span> Dev A. Singanjude</p>
+        <aside class="glass contact-info reveal delay-1">
+          <h3>Get in touch</h3>
+          <p>
+            <a href="mailto:devsinganjude18@gmail.com" class="icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Email
+            </a>
+          </p>
+          <p>
+            <a href="https://github.com/devsinganjude" target="_blank" rel="noopener" class="icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+              </svg>
+              GitHub
+            </a>
+          </p>
+          <p>
+            <a href="https://www.linkedin.com/in/dev-singanjude-91a8b5399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank" rel="noopener" class="icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              LinkedIn
+            </a>
+          </p>
+          <p>
+            <a href="https://www.instagram.com/devsinganjude.13/" target="_blank" rel="noopener" class="icon-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </p>
+        </aside>
       </div>
-    </footer>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p style="margin-bottom: 8px; font-weight: 500; letter-spacing: 0.5px; opacity: 0.9;">Thank you for visiting! ✨
+      </p>
+      <p style="font-size: 0.85rem; opacity: 0.7;">© <span id="year"></span> Dev A. Singanjude</p>
+    </div>
+  </footer>
 
   </div>
 
